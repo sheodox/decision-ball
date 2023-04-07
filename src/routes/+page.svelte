@@ -105,7 +105,7 @@
 		class:answered
 		class:shake
 		style:--answer-rotation="{rotation}deg"
-		on:click={makeAnswer}
+		on:mouseup={makeAnswer}
 		on:keydown={keydown}
 	>
 		<div class="glare" />
@@ -120,7 +120,8 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 
-	const answers = ['Yeah', 'So true', 'No way yo', 'Wrong!', 'sus', '...', ';)', 'Not worth your time'];
+	const answers = ['Yeah', 'So true', 'No way yo', 'Wrong!', 'sus', '...', ';)', 'Not worth your time'],
+		autoMode = false;
 
 	let timer: ReturnType<typeof setInterval>,
 		answered = false,
@@ -130,7 +131,7 @@
 		answer = '';
 	makeAnswer();
 
-	if (true) {
+	if (autoMode) {
 		onMount(() => {
 			timer = setInterval(() => {
 				makeAnswer();
